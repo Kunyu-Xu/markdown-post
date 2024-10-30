@@ -56,10 +56,10 @@ export const siteConfig = {
     // },
   ],
   links: {
-    github: "https://github.com/Cyronlee/markdown-poster",
-    twitter: "https://github.com/Cyronlee/markdown-poster",
-    docs: "https://github.com/Cyronlee/markdown-poster",
-    discord: "https://github.com/Cyronlee/markdown-poster",
-    sponsor: "https://github.com/Cyronlee/markdown-poster",
+    github: "https://github.com/Cyronlee/markdown-post",
+    twitter: "https://github.com/Cyronlee/markdown-post",
+    docs: "https://github.com/Cyronlee/markdown-post",
+    discord: "https://github.com/Cyronlee/markdown-post",
+    sponsor: "https://github.com/Cyronlee/markdown-post",
   },
 };

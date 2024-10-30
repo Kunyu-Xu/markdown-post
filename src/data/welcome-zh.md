@@ -34,4 +34,5 @@ Markdown Post 的多种输出格式，可以满足不同的使用场景：
 
 ## 欢迎反馈
 
-欢迎在 Github Issue 中提出你的想法和建议，你的反馈会让 Markdown Post 变得更好！
+欢迎在 [Github Issue](https://github.com/Cyronlee/markdown-post/issues) 中提出你的想法和建议，你的反馈会让 Markdown Post
+变得更好！
