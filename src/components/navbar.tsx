@@ -24,6 +24,7 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
+import LangSwitcher from "@/components/lang-switcher.tsx";
 
 export const Navbar = () => {
   const searchInput = (
@@ -57,7 +58,7 @@ export const Navbar = () => {
             href="/"
           >
             <Logo />
-            <p className="font-bold text-inherit">Markdown Poster</p>
+            <p className="font-bold text-inherit">Markdown Post</p>
           </Link>
         </NavbarBrand>
         {/*<div className="hidden lg:flex gap-4 justify-start ml-2">*/}
@@ -89,6 +90,7 @@ export const Navbar = () => {
           {/*<Link isExternal href={siteConfig.links.discord} title="Discord">*/}
           {/*  <DiscordIcon className="text-default-500" />*/}
           {/*</Link>*/}
+          <LangSwitcher />
           <Link isExternal href={siteConfig.links.github} title="GitHub">
             <GithubIcon className="text-default-500" />
           </Link>
@@ -110,6 +112,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
+        <LangSwitcher />
         <Link isExternal href={siteConfig.links.github}>
           <GithubIcon className="text-default-500" />
         </Link>

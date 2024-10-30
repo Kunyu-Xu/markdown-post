@@ -15,6 +15,7 @@ import { copyHtmlWithStyle } from "@/lib/copy-html";
 import { replaceImgSrc } from "@/lib/image-store";
 import { TypewriterHero } from "@/components/typewriter-hero";
 import { MarkdownEditor } from "@/components/markdown-editor.tsx";
+import { useTranslation } from "react-i18next";
 
 // Move marked configuration to a separate constant
 const markedInstance = new Marked(
@@ -51,6 +52,8 @@ const fetchAndInlineStyles = async (
 };
 
 export default function IndexPage() {
+  const { i18n, t } = useTranslation();
+
   const [markdown, setMarkdown] = useState(defaultMarkdown);
   const [html, setHtml] = useState("");
   const [inlineStyledHTML, setInlineStyledHTML] = useState("");
@@ -115,10 +118,7 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
-      <div className="flex items-center justify-center">
-        {/*<FlipWordHero />*/}
-        <TypewriterHero />
-      </div>
+      <TypewriterHero />
       <div className="flex gap-4 items-center mb-4">
         <Select
           disallowEmptySelection={true}
@@ -143,7 +143,7 @@ export default function IndexPage() {
             });
           }}
         >
-          Copy as Email
+          {t("toolbar.copy")}
         </Button>
         {/*<Switch*/}
         {/*  isSelected={showRenderedHTML}*/}

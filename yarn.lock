@@ -138,7 +138,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.25.9"
 
-"@babel/runtime@^7.20.13":
+"@babel/runtime@^7.20.13", "@babel/runtime@^7.23.2", "@babel/runtime@^7.25.0":
   version "7.26.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.26.0.tgz#8600c2f595f277c60815256418b85356a65173c1"
   integrity sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==
@@ -674,6 +674,22 @@
     "@nextui-org/system-rsc" "2.1.6"
     "@react-types/shared" "3.23.1"
 
+"@nextui-org/dropdown@^2.1.31":
+  version "2.1.31"
+  resolved "https://registry.yarnpkg.com/@nextui-org/dropdown/-/dropdown-2.1.31.tgz#4606509b00101f9a04a420400837485fe0390081"
+  integrity sha512-tP6c5MAhWK4hJ6U02oX6APUpjjrn97Zn7t+56Xx4YyQOSj0CJx18VF0JsU+MrjFZxPX3UBKU3B2zGBHOEGE4Kw==
+  dependencies:
+    "@nextui-org/aria-utils" "2.0.26"
+    "@nextui-org/menu" "2.0.30"
+    "@nextui-org/popover" "2.1.29"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@react-aria/focus" "3.17.1"
+    "@react-aria/menu" "3.14.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/menu" "3.7.1"
+    "@react-types/menu" "3.9.9"
+
 "@nextui-org/framer-utils@2.0.25":
   version "2.0.25"
   resolved "https://registry.yarnpkg.com/@nextui-org/framer-utils/-/framer-utils-2.0.25.tgz#f8abb375ab4efe9a6514c7219e8b8ae32398f5fa"
@@ -740,6 +756,26 @@
     "@react-aria/listbox" "3.12.1"
     "@react-aria/utils" "3.24.1"
     "@react-stately/list" "3.10.5"
+    "@react-types/menu" "3.9.9"
+    "@react-types/shared" "3.23.1"
+
+"@nextui-org/menu@2.0.30":
+  version "2.0.30"
+  resolved "https://registry.yarnpkg.com/@nextui-org/menu/-/menu-2.0.30.tgz#68dd28d06c37631eeb4af0e74cd4ca904aedcfd5"
+  integrity sha512-hZRr/EQ5JxB6yQFmUhDSv9pyLTJmaB4SFC/t5A17UljRhMexlvTU6QpalYIkbY0R/bUXvOkTJNzsRgI5OOQ/aA==
+  dependencies:
+    "@nextui-org/aria-utils" "2.0.26"
+    "@nextui-org/divider" "2.0.32"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@nextui-org/use-aria-menu" "2.0.7"
+    "@nextui-org/use-is-mobile" "2.0.9"
+    "@react-aria/focus" "3.17.1"
+    "@react-aria/interactions" "3.21.3"
+    "@react-aria/menu" "3.14.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/menu" "3.7.1"
+    "@react-stately/tree" "3.8.1"
     "@react-types/menu" "3.9.9"
     "@react-types/shared" "3.23.1"
 
@@ -962,6 +998,21 @@
     "@react-aria/interactions" "3.21.3"
     "@react-aria/utils" "3.24.1"
     "@react-types/link" "3.5.5"
+    "@react-types/shared" "3.23.1"
+
+"@nextui-org/use-aria-menu@2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-aria-menu/-/use-aria-menu-2.0.7.tgz#6d1b29837a125594b20719ced458d1392a3f48e5"
+  integrity sha512-5U91zFiWTLXsOhE0W3CThsD5TmL3ANeTEtoimtPgSLWV9keZBD9Ja62WsnPZPPAWhmv7jtL0/qk4d/YOra7PVA==
+  dependencies:
+    "@react-aria/i18n" "3.11.1"
+    "@react-aria/interactions" "3.21.3"
+    "@react-aria/menu" "3.14.1"
+    "@react-aria/selection" "3.18.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/collections" "3.10.7"
+    "@react-stately/tree" "3.8.1"
+    "@react-types/menu" "3.9.9"
     "@react-types/shared" "3.23.1"
 
 "@nextui-org/use-aria-multiselect@2.2.5":
@@ -1544,6 +1595,17 @@
   dependencies:
     "@react-stately/overlays" "^3.6.11"
     "@react-types/tooltip" "^3.4.12"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/tree@3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@react-stately/tree/-/tree-3.8.1.tgz#a3ea36d503a0276a860842cc8bf7c759aa7fa75f"
+  integrity sha512-LOdkkruJWch3W89h4B/bXhfr0t0t1aRfEp+IMrrwdRAl23NaPqwl5ILHs4Xu5XDHqqhg8co73pHrJwUyiTWEjw==
+  dependencies:
+    "@react-stately/collections" "^3.10.7"
+    "@react-stately/selection" "^3.15.1"
+    "@react-stately/utils" "^3.10.1"
+    "@react-types/shared" "^3.23.1"
     "@swc/helpers" "^0.5.0"
 
 "@react-stately/tree@^3.8.1":
@@ -3167,6 +3229,20 @@ highlight.js@^11.10.0:
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.10.0.tgz#6e3600dc4b33d6dc23d5bd94fbf72405f5892b92"
   integrity sha512-SYVnVFswQER+zu1laSya563s+F8VDGt7o35d4utbamowvUNLLMovFqwCLSocpZTz3MgaSRA1IbqRWZv97dtErQ==
 
+html-parse-stringify@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/html-parse-stringify/-/html-parse-stringify-3.0.1.tgz#dfc1017347ce9f77c8141a507f233040c59c55d2"
+  integrity sha512-KknJ50kTInJ7qIScF3jeaFRpMpE8/lfiTdzf/twXyPBLAGrLRTmkz3AdTnKeh40X8k9L2fdYwEp/42WGXIRGcg==
+  dependencies:
+    void-elements "3.1.0"
+
+i18next@^23.16.4:
+  version "23.16.4"
+  resolved "https://registry.yarnpkg.com/i18next/-/i18next-23.16.4.tgz#79c07544f6d6fa803fe8427108d547542c1d6cf4"
+  integrity sha512-9NIYBVy9cs4wIqzurf7nLXPyf3R78xYbxExVqHLK9od3038rjpyOEzW+XB130kZ1N4PZ9inTtJ471CRJ4Ituyg==
+  dependencies:
+    "@babel/runtime" "^7.23.2"
+
 ignore@^5.1.1, ignore@^5.2.0, ignore@^5.3.1:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"
@@ -3955,6 +4031,14 @@ react-dom@18.3.1:
     loose-envify "^1.1.0"
     scheduler "^0.23.2"
 
+react-i18next@^15.1.0:
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-15.1.0.tgz#9494e4add2389f04c205dd7628c1aa75747b98a3"
+  integrity sha512-zj3nJynMnZsy2gPZiOTC7XctCY5eQGqT3tcKMmfJWC9FMvgd+960w/adq61j8iPzpwmsXejqID9qC3Mqu1Xu2Q==
+  dependencies:
+    "@babel/runtime" "^7.25.0"
+    html-parse-stringify "^3.0.1"
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -4644,6 +4728,11 @@ vite@^5.2.0:
     rollup "^4.20.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+void-elements@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-3.1.0.tgz#614f7fbf8d801f0bb5f0661f5b2f5785750e4f09"
+  integrity sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==
 
 w3c-keyname@^2.2.4:
   version "2.2.8"

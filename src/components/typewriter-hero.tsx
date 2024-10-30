@@ -3,27 +3,26 @@ import { TypewriterEffectSmooth } from "@/components/typewriter";
 export function TypewriterHero() {
   const words = [
     {
+      text: "Write",
+    },
+    {
       text: "Markdown",
-    },
-    {
-      text: "To",
-    },
-    {
-      text: "Image,",
       className: "text-blue-500 dark:text-blue-500",
     },
     {
-      text: "Email,",
+      text: "And",
+    },
+    {
+      text: "Post",
       className: "text-blue-500 dark:text-blue-500",
     },
     {
-      text: "and more.",
-      className: "text-blue-500 dark:text-blue-500",
+      text: "Everywhere.",
     },
   ];
 
   return (
-    <div className="flex justify-center items-center px-4">
+    <div className="flex justify-center items-center">
       <TypewriterEffectSmooth className="" cursorClassName="" words={words} />
     </div>
   );

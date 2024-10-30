@@ -1,9 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Markdown Poster",
-  description:
-    "Make beautiful Markdown Poster regardless of your design experience.",
+  name: "Markdown Post",
+  description: "Write Markdown And Post Everywhere.",
   navItems: [
     // {
     //   label: "Home",

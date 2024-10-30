@@ -8,6 +8,8 @@ import "@/styles/globals.css";
 import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/react";
 
+import "./lib/i18n.ts";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
