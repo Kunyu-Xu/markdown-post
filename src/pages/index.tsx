@@ -8,14 +8,15 @@ import { toast } from "sonner";
 
 import DefaultLayout from "@/layouts/default";
 import ResizableSplitPane from "@/components/resizable-split-pane";
-import { defaultMarkdown } from "@/config/data";
 import inlineStyles from "@/lib/inline-styles";
-import { getCssUrl, markdownStyles } from "@/config/md-styles";
+import { loadCSS, markdownStyles } from "@/config/post-styles.ts";
 import { copyHtmlWithStyle } from "@/lib/copy-html";
 import { replaceImgSrc } from "@/lib/image-store";
 import { TypewriterHero } from "@/components/typewriter-hero";
 import { MarkdownEditor } from "@/components/markdown-editor.tsx";
 import { useTranslation } from "react-i18next";
+
+import defaultMarkdown from "@/data/welcome-zh.md?raw";
 
 // Move marked configuration to a separate constant
 const markedInstance = new Marked(
@@ -35,20 +36,6 @@ const wrapWithContainer = (htmlString: string) => {
   return `<div style="margin: 0; padding: 32px; background-color: #e5e5e5">
       <div class="article" style="max-width: 960px;margin: 0 auto;">${htmlString}</div>
     </div>`;
-};
-
-const fetchAndInlineStyles = async (
-  html: string,
-  styleName: string,
-): Promise<string> => {
-  const styleUrl = getCssUrl(styleName);
-
-  if (!styleUrl) throw new Error("Style URL is undefined");
-
-  const cssResponse = await fetch(styleUrl);
-  const cssContent = await cssResponse.text();
-
-  return inlineStyles(html, cssContent);
 };
 
 export default function IndexPage() {
@@ -75,18 +62,10 @@ export default function IndexPage() {
 
   // Apply inline styles
   useEffect(() => {
-    const applyInlineStyles = async () => {
-      try {
-        const inlinedHtml = await fetchAndInlineStyles(html, selectedStyle);
-
-        setInlineStyledHTML(inlinedHtml);
-      } catch (error) {
-        console.error("Error applying inline styles:", error);
-      }
-    };
-
     if (html) {
-      applyInlineStyles();
+      const cssContent = loadCSS(selectedStyle) as string;
+
+      setInlineStyledHTML(inlineStyles(html, cssContent));
     }
   }, [html, selectedStyle]);
 
@@ -118,6 +97,7 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
+      {/*<FlipWordHero />*/}
       <TypewriterHero />
       <div className="flex gap-4 items-center mb-4">
         <Select
