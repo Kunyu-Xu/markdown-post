@@ -1,60 +1,164 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
+import { useEffect, useState } from "react";
+import { Select, SelectItem } from "@nextui-org/select";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
+import hljs from "highlight.js";
+import { Button } from "@nextui-org/button";
+import { toast } from "sonner";
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
+import ResizableSplitPane from "@/components/resizable-split-pane";
+import { defaultMarkdown } from "@/config/data";
+import inlineStyles from "@/lib/inline-styles";
+import { getCssUrl, markdownStyles } from "@/config/md-styles";
+import { copyHtmlWithStyle } from "@/lib/copy-html";
+import { replaceImgSrc } from "@/lib/image-store";
+import { TypewriterHero } from "@/components/typewriter-hero";
+import { MarkdownEditor } from "@/components/markdown-editor.tsx";
+
+// Move marked configuration to a separate constant
+const markedInstance = new Marked(
+  markedHighlight({
+    emptyLangClass: "hljs",
+    langPrefix: "hljs language-",
+    highlight(code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : "plaintext";
+
+      return hljs.highlight(code, { language }).value;
+    },
+  }),
+);
+
+// Helper functions
+const wrapWithContainer = (htmlString: string) => {
+  return `<div style="margin: 0; padding: 32px; background-color: #e5e5e5">
+      <div class="article" style="max-width: 960px;margin: 0 auto;">${htmlString}</div>
+    </div>`;
+};
+
+const fetchAndInlineStyles = async (
+  html: string,
+  styleName: string,
+): Promise<string> => {
+  const styleUrl = getCssUrl(styleName);
+
+  if (!styleUrl) throw new Error("Style URL is undefined");
+
+  const cssResponse = await fetch(styleUrl);
+  const cssContent = await cssResponse.text();
+
+  return inlineStyles(html, cssContent);
+};
 
 export default function IndexPage() {
+  const [markdown, setMarkdown] = useState(defaultMarkdown);
+  const [html, setHtml] = useState("");
+  const [inlineStyledHTML, setInlineStyledHTML] = useState("");
+  const [selectedStyle, setSelectedStyle] = useState(markdownStyles[0].name);
+
+  // @ts-ignore
+  const [showRenderedHTML, setShowRenderedHTML] = useState(true);
+
+  // Parse markdown to HTML
+  useEffect(() => {
+    const parseMarkdown = async () => {
+      const parsedHTML = await markedInstance.parse(markdown);
+
+      setHtml(wrapWithContainer(replaceImgSrc(parsedHTML)));
+    };
+
+    parseMarkdown();
+  }, [markdown]);
+
+  // Apply inline styles
+  useEffect(() => {
+    const applyInlineStyles = async () => {
+      try {
+        const inlinedHtml = await fetchAndInlineStyles(html, selectedStyle);
+
+        setInlineStyledHTML(inlinedHtml);
+      } catch (error) {
+        console.error("Error applying inline styles:", error);
+      }
+    };
+
+    if (html) {
+      applyInlineStyles();
+    }
+  }, [html, selectedStyle]);
+
+  // UI Components
+  const LeftContent = (
+    <div className="p-4">
+      <MarkdownEditor value={markdown} onChange={setMarkdown} />
+    </div>
+  );
+
+  const RightContent = (
+    <div className="p-4">
+      {showRenderedHTML ? (
+        <>
+          <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+            rel="stylesheet"
+          />
+          <div
+            dangerouslySetInnerHTML={{ __html: inlineStyledHTML }}
+            id="markdown-body"
+          />
+        </>
+      ) : (
+        inlineStyledHTML
+      )}
+    </div>
+  );
+
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block max-w-lg text-center justify-center">
-          <span className={title()}>Make&nbsp;</span>
-          <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-          <br />
-          <span className={title()}>
-            websites regardless of your design experience.
-          </span>
-          <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern React UI library.
-          </div>
-        </div>
-
-        <div className="flex gap-3">
-          <Link
-            isExternal
-            className={buttonStyles({
-              color: "primary",
-              radius: "full",
-              variant: "shadow",
-            })}
-            href={siteConfig.links.docs}
-          >
-            Documentation
-          </Link>
-          <Link
-            isExternal
-            className={buttonStyles({ variant: "bordered", radius: "full" })}
-            href={siteConfig.links.github}
-          >
-            <GithubIcon size={20} />
-            GitHub
-          </Link>
-        </div>
-
-        <div className="mt-8">
-          <Snippet hideCopyButton hideSymbol variant="bordered">
-            <span>
-              Get started by editing{" "}
-              <Code color="primary">pages/index.tsx</Code>
-            </span>
-          </Snippet>
-        </div>
-      </section>
+      <div className="flex items-center justify-center">
+        {/*<FlipWordHero />*/}
+        <TypewriterHero />
+      </div>
+      <div className="flex gap-4 items-center mb-4">
+        <Select
+          disallowEmptySelection={true}
+          label="Select style"
+          selectedKeys={[selectedStyle]}
+          onChange={(e) => setSelectedStyle(e.target.value)}
+        >
+          {markdownStyles.map((style) => (
+            <SelectItem key={style.name} value={style.name}>
+              {style.name}
+            </SelectItem>
+          ))}
+        </Select>
+        <Button
+          className="h-[56px] light:bg-black light:text-white dark:bg-white dark:text-black"
+          onClick={() => {
+            copyHtmlWithStyle("markdown-body");
+            toast.success(`Content copied`, {
+              description: "You can paste into your email",
+              duration: 4000,
+              position: "top-center",
+            });
+          }}
+        >
+          Copy as Email
+        </Button>
+        {/*<Switch*/}
+        {/*  isSelected={showRenderedHTML}*/}
+        {/*  onValueChange={setShowRenderedHTML}*/}
+        {/*>*/}
+        {/*  Render HTML*/}
+        {/*</Switch>*/}
+      </div>
+      <ResizableSplitPane
+        initialLeftWidth={40}
+        leftPane={LeftContent}
+        maxLeftWidth={70}
+        minLeftWidth={30}
+        rightPane={RightContent}
+      />
     </DefaultLayout>
   );
 }

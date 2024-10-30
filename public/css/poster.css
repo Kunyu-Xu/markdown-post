@@ -1,0 +1,99 @@
+/* 通用设置 */
+.article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  background: linear-gradient(
+    to bottom right,
+    #6b46c1,
+    rgba(79, 70, 229, 0.9),
+    #5a34b0
+  );
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  user-select: none;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #222222;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 24px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #bbbbbb;
+  margin-bottom: 12px;
+}
+
+ul,
+ol {
+  list-style-type: auto;
+  padding-left: 2em;
+}
+
+p {
+  font-size: 16px;
+  text-align: center;
+}
+
+blockquote {
+  font-size: 18px;
+  font-style: italic;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #333333;
+  color: #666666;
+  margin: 12px 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  margin: 16px 0;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 24px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+code {
+  background-color: #e8e8e8;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #c7254e;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: max-content;
+  max-width: 100%;
+  overflow: auto;
+}
+
+th,
+td {
+  padding: 6px 13px;
+  border: 1px solid #d1d9e0;
+}
