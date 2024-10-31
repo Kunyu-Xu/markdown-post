@@ -7,6 +7,7 @@ import {
   DropdownItem,
 } from "@nextui-org/dropdown";
 import { toast } from "sonner";
+import * as htmlToImage from "html-to-image";
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 import { copyHtmlWithStyle } from "@/lib/copy-html.tsx";
@@ -26,7 +27,6 @@ export default function CopyButtonGroup() {
     image: "Copy as image",
   };
 
-  // Convert the Set to an Array and get the first value.
   const selectedOptionValue: any = Array.from(selectedOption)[0];
 
   const handleCopyButtonClick = () => {
@@ -37,6 +37,26 @@ export default function CopyButtonGroup() {
         duration: 4000,
         position: "top-center",
       });
+    } else if (selectedOption.has("image")) {
+      const element = document.getElementById("markdown-body");
+      if (element) {
+        htmlToImage
+          .toPng(element)
+          .then(function (dataUrl) {
+            const link = document.createElement("a");
+            link.download = "markdown-body.png";
+            link.href = dataUrl;
+            link.click();
+            toast.success("Image copied to clipboard", {
+              duration: 4000,
+              position: "top-center",
+            });
+          })
+          .catch(function (error) {
+            console.error("oops, something went wrong!", error);
+            toast.error("Failed to copy image");
+          });
+      }
     }
   };
 
