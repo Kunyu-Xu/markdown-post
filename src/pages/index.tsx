@@ -77,10 +77,6 @@ export default function IndexPage() {
     <div className="p-4">
       {showRenderedHTML ? (
         <>
-          <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
-            rel="stylesheet"
-          />
           <div
             dangerouslySetInnerHTML={{ __html: inlineStyledHTML }}
             id="markdown-body"
