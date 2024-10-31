@@ -14,6 +14,7 @@ import { TypewriterHero } from "@/components/typewriter-hero";
 import { MarkdownEditor } from "@/components/markdown-editor.tsx";
 import defaultMarkdown from "@/data/welcome-zh.md?raw";
 import CopyButtonGroup from "@/components/copy-button-group.tsx";
+import DownloadButtonGroup from "@/components/download-button-group.tsx";
 
 // Move marked configuration to a separate constant
 const markedInstance = new Marked(
@@ -106,6 +107,7 @@ export default function IndexPage() {
           ))}
         </Select>
         <CopyButtonGroup />
+        <DownloadButtonGroup />
         {/*<Switch*/}
         {/*  isSelected={showRenderedHTML}*/}
         {/*  onValueChange={setShowRenderedHTML}*/}
