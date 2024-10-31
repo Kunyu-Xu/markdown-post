@@ -8,6 +8,7 @@ import {
 } from "@nextui-org/dropdown";
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
+import { Copy } from 'lucide-react';
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 import { copyHtmlWithStyle } from "@/lib/copy-html.tsx";
@@ -67,6 +68,7 @@ export default function CopyButtonGroup() {
   return (
     <ButtonGroup variant="flat">
       <Button className="h-[56px]" onClick={handleCopyButtonClick}>
+        <Copy size={20} />
         {labelsMap[selectedOptionValue]}
       </Button>
       <Dropdown placement="bottom-end">

@@ -3679,6 +3679,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lucide-react@^0.454.0:
+  version "0.454.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.454.0.tgz#a81b9c482018720f07ead0503ae502d94d528444"
+  integrity sha512-hw7zMDwykCLnEzgncEEjHeA6+45aeEzRYuKHuyRSOPkhko+J3ySGjGIzu+mmMfDFG1vazHepMaYFYHbTFAZAAQ==
+
 marked-highlight@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/marked-highlight/-/marked-highlight-2.2.0.tgz#94d04da1a03abc36afbe4021294de0e4d4907636"

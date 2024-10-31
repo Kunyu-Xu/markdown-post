@@ -8,6 +8,7 @@ import {
 } from "@nextui-org/dropdown";
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
+import { Download } from 'lucide-react';
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 
@@ -60,6 +61,7 @@ export default function DownloadButtonGroup() {
   return (
     <ButtonGroup variant="flat">
       <Button className="h-[56px]" onClick={handleDownloadButtonClick}>
+        <Download size={20} />
         {labelsMap[selectedOptionValue]}
       </Button>
       <Dropdown placement="bottom-end">
