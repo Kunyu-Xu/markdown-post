@@ -3,20 +3,17 @@ import { Select, SelectItem } from "@nextui-org/select";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
-import { Button } from "@nextui-org/button";
-import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 import DefaultLayout from "@/layouts/default";
 import ResizableSplitPane from "@/components/resizable-split-pane";
 import inlineStyles from "@/lib/inline-styles";
 import { loadCSS, markdownStyles } from "@/config/post-styles.ts";
-import { copyHtmlWithStyle } from "@/lib/copy-html";
 import { replaceImgSrc } from "@/lib/image-store";
 import { TypewriterHero } from "@/components/typewriter-hero";
 import { MarkdownEditor } from "@/components/markdown-editor.tsx";
-import { useTranslation } from "react-i18next";
-
 import defaultMarkdown from "@/data/welcome-zh.md?raw";
+import CopyButtonGroup from "@/components/copy-button-group.tsx";
 
 // Move marked configuration to a separate constant
 const markedInstance = new Marked(
@@ -112,19 +109,7 @@ export default function IndexPage() {
             </SelectItem>
           ))}
         </Select>
-        <Button
-          className="h-[56px] light:bg-black light:text-white dark:bg-white dark:text-black"
-          onClick={() => {
-            copyHtmlWithStyle("markdown-body");
-            toast.success(`Content copied`, {
-              description: "You can paste into your email",
-              duration: 4000,
-              position: "top-center",
-            });
-          }}
-        >
-          {t("toolbar.copy")}
-        </Button>
+        <CopyButtonGroup />
         {/*<Switch*/}
         {/*  isSelected={showRenderedHTML}*/}
         {/*  onValueChange={setShowRenderedHTML}*/}
