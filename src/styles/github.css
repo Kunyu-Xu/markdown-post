@@ -75,14 +75,13 @@ a:hover {
 
 img {
   border-style: none;
-  max-width: 100%;
+  width: 100%;
 }
 
 table {
   border-spacing: 0;
   border-collapse: collapse;
-  width: max-content;
-  max-width: 100%;
+  width: 100%;
   overflow: auto;
 }
 
