@@ -2,6 +2,8 @@
 
 import React, { useState, useCallback, useEffect, useRef } from "react";
 
+import useTailwindBreakpoints from "@/lib/use-tailwind-breakpoints";
+
 interface ResizableSplitPaneProps {
   leftPane: React.ReactNode;
   rightPane: React.ReactNode;
@@ -20,6 +22,8 @@ export default function ResizableSplitPane({
   const containerRef = useRef<HTMLDivElement>(null);
   const [leftWidth, setLeftWidth] = useState(initialLeftWidth);
   const [isDragging, setIsDragging] = useState(false);
+
+  const tailwindBreakpoints = useTailwindBreakpoints();
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -65,30 +69,32 @@ export default function ResizableSplitPane({
 
   return (
     <div>
-      <div
-        ref={containerRef}
-        className="hidden md:flex h-lvh w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
-      >
-        <div
-          className="overflow-auto bg-white"
-          style={{ width: `${leftWidth}%` }}
-        >
-          {leftPane}
+      {tailwindBreakpoints.has("md") ? (
+        <div className="flex flex-col border-3 border-solid border-gray-300 rounded-2xl overflow-hidden">
+          <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
+          <div className="h-1 bg-gray-300"></div>
+          <div className="flex-1 overflow-auto bg-white">{leftPane}</div>
         </div>
+      ) : (
         <div
-          className="cursor-col-resize bg-gray-300 hover:bg-gray-400 transition-colors"
-          style={{ width: "4px" }}
-          onDoubleClick={handleDoubleClick}
-          onMouseDown={handleMouseDown}
-        />
-        <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
-      </div>
-
-      <div className="md:hidden flex flex-col border-3 border-solid border-gray-300 rounded-2xl overflow-hidden">
-        <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
-        <div className="h-1 bg-gray-300"></div>
-        <div className="flex-1 overflow-auto bg-white">{leftPane}</div>
-      </div>
+          ref={containerRef}
+          className="flex h-lvh w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
+        >
+          <div
+            className="overflow-auto bg-white"
+            style={{ width: `${leftWidth}%` }}
+          >
+            {leftPane}
+          </div>
+          <div
+            className="cursor-col-resize bg-gray-300 hover:bg-gray-400 transition-colors"
+            style={{ width: "4px" }}
+            onDoubleClick={handleDoubleClick}
+            onMouseDown={handleMouseDown}
+          />
+          <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
+        </div>
+      )}
     </div>
   );
 }
