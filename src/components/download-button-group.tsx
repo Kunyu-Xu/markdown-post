@@ -8,11 +8,17 @@ import {
 } from "@nextui-org/dropdown";
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
-import { Download } from 'lucide-react';
+import { Download } from "lucide-react";
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 
-export default function DownloadButtonGroup() {
+interface DownloadButtonGroupProps {
+  fullWidth?: boolean;
+}
+
+export default function DownloadButtonGroup({
+  fullWidth,
+}: DownloadButtonGroupProps) {
   const [selectedOption, setSelectedOption] = React.useState<any>(
     new Set(["image"]),
   );
@@ -42,7 +48,7 @@ export default function DownloadButtonGroup() {
           .toPng(element)
           .then(function (dataUrl) {
             const link = document.createElement("a");
-            link.download = "markdown-body.png";
+            link.download = "markdown-post.png";
             link.href = dataUrl;
             link.click();
             toast.success("Image saved", {
@@ -59,7 +65,7 @@ export default function DownloadButtonGroup() {
   };
 
   return (
-    <ButtonGroup variant="flat">
+    <ButtonGroup fullWidth={fullWidth} variant="flat">
       <Button className="h-[56px]" onClick={handleDownloadButtonClick}>
         <Download size={20} />
         {labelsMap[selectedOptionValue]}

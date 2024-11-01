@@ -85,9 +85,9 @@ export default function ResizableSplitPane({
       </div>
 
       <div className="md:hidden flex flex-col border-3 border-solid border-gray-300 rounded-2xl overflow-hidden">
-        <div className="flex-1 overflow-auto bg-white">{leftPane}</div>
-        <div className="h-1 bg-gray-300"></div>
         <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
+        <div className="h-1 bg-gray-300"></div>
+        <div className="flex-1 overflow-auto bg-white">{leftPane}</div>
       </div>
     </div>
   );

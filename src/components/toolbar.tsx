@@ -17,8 +17,8 @@ const Toolbar: React.FC<ToolbarProps> = ({
   return (
     <div className="flex flex-col md:flex-row gap-4 items-center mb-4">
       <Select
-        disallowEmptySelection={true}
         label="Select style"
+        disallowEmptySelection={true}
         selectedKeys={[selectedStyle]}
         onChange={(e) => setSelectedStyle(e.target.value)}
       >
@@ -28,8 +28,14 @@ const Toolbar: React.FC<ToolbarProps> = ({
           </SelectItem>
         ))}
       </Select>
-      <CopyButtonGroup />
-      <DownloadButtonGroup />
+      <div className="hidden md:flex flex-row gap-4 items-center">
+        <CopyButtonGroup />
+        <DownloadButtonGroup />
+      </div>
+      <div className="md:hidden w-full flex flex-row gap-4 items-center">
+        <CopyButtonGroup fullWidth />
+        <DownloadButtonGroup fullWidth />
+      </div>
     </div>
   );
 };
