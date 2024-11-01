@@ -2,9 +2,9 @@ import React from "react";
 import { Button, ButtonGroup } from "@nextui-org/button";
 import {
   Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
   DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
 } from "@nextui-org/dropdown";
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
@@ -12,6 +12,7 @@ import { Copy } from "lucide-react";
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 import { copyHtmlWithStyle } from "@/lib/copy-html.tsx";
+import { isSafari } from "@/lib/is-safari.ts";
 
 interface CopyButtonGroupProps {
   fullWidth?: boolean;
@@ -34,6 +35,14 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
 
   const selectedOptionValue: any = Array.from(selectedOption)[0];
 
+  const loadBlobForSafari: any = async (element: HTMLElement) => {
+    // workaround to fix image missing in Safari
+    await htmlToImage.toBlob(element);
+    await htmlToImage.toBlob(element);
+
+    return await htmlToImage.toBlob(element);
+  };
+
   const handleCopyButtonClick = () => {
     if (selectedOption.has("email")) {
       copyHtmlWithStyle("markdown-body");
@@ -44,7 +53,29 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
       });
     } else if (selectedOption.has("image")) {
       const element = document.getElementById("markdown-body");
-      if (element) {
+
+      if (!element) {
+        return;
+      }
+
+      toast.success("Converting... please wait...", {
+        duration: 4000,
+        position: "top-center",
+      });
+
+      if (isSafari) {
+        // workaround to fix permission issue in Safari
+        const text = new ClipboardItem({
+          "image/png": loadBlobForSafari(element).then((blob: any) => blob),
+        });
+
+        navigator.clipboard.write([text]);
+
+        toast.success("Image copied to clipboard", {
+          duration: 4000,
+          position: "top-center",
+        });
+      } else {
         htmlToImage
           .toBlob(element)
           .then(function (blob: any) {

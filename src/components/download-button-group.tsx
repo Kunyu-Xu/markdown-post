@@ -11,6 +11,7 @@ import * as htmlToImage from "html-to-image";
 import { Download } from "lucide-react";
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
+import { isSafari } from "@/lib/is-safari.ts";
 
 interface DownloadButtonGroupProps {
   fullWidth?: boolean;
@@ -35,7 +36,7 @@ export default function DownloadButtonGroup({
 
   const selectedOptionValue: any = Array.from(selectedOption)[0];
 
-  const handleDownloadButtonClick = () => {
+  const handleDownloadButtonClick = async () => {
     if (selectedOption.has("pdf")) {
       toast.success(`Feature is developing`, {
         duration: 4000,
@@ -43,23 +44,36 @@ export default function DownloadButtonGroup({
       });
     } else if (selectedOption.has("image")) {
       const element = document.getElementById("markdown-body");
-      if (element) {
-        htmlToImage
-          .toPng(element)
-          .then(function (dataUrl) {
-            const link = document.createElement("a");
-            link.download = "markdown-post.png";
-            link.href = dataUrl;
-            link.click();
-            toast.success("Image saved", {
-              duration: 4000,
-              position: "top-center",
-            });
-          })
-          .catch(function (error) {
-            console.error("oops, something went wrong!", error);
-            toast.error("Failed to download image");
-          });
+
+      if (!element) {
+        return;
+      }
+
+      toast.success("Converting... please wait...", {
+        duration: 4000,
+        position: "top-center",
+      });
+
+      try {
+        if (isSafari) {
+          // workaround to fix image missing in Safari
+          await htmlToImage.toPng(element);
+          await htmlToImage.toPng(element);
+        }
+
+        const dataUrl = await htmlToImage.toPng(element);
+
+        const link = document.createElement("a");
+        link.download = "markdown-post.png";
+        link.href = dataUrl;
+        link.click();
+        toast.success("Image saved", {
+          duration: 4000,
+          position: "top-center",
+        });
+      } catch (error) {
+        console.error("oops, something went wrong!", error);
+        toast.error("Failed to download image");
       }
     }
   };
