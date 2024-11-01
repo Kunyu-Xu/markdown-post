@@ -21,7 +21,7 @@ h1 {
   font-size: 36px;
   font-weight: bold;
   text-align: center;
-  border-bottom: 2px solid #222222;
+  border-bottom: 2px solid #fff;
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
@@ -30,7 +30,7 @@ h2 {
   font-size: 28px;
   margin-top: 24px;
   padding-bottom: 6px;
-  border-bottom: 1px solid #bbbbbb;
+  border-bottom: 1px solid #fff;
   margin-bottom: 12px;
 }
 
@@ -95,7 +95,7 @@ table {
 th,
 td {
   padding: 6px 13px;
-  border: 1px solid #d1d9e0;
+  border: 1px solid #fff;
 }
 
 /* Highlight.js */
@@ -110,20 +110,20 @@ code.hljs {
 }
 
 .hljs {
-  color: #383a42;
-  background: #fafafa;
+  color: #abb2bf;
+  background: #282c34;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #a0a1a7;
+  color: #5c6370;
   font-style: italic;
 }
 
 .hljs-doctag,
 .hljs-keyword,
 .hljs-formula {
-  color: #a626a4;
+  color: #c678dd;
 }
 
 .hljs-section,
@@ -131,11 +131,11 @@ code.hljs {
 .hljs-selector-tag,
 .hljs-deletion,
 .hljs-subst {
-  color: #e45649;
+  color: #e06c75;
 }
 
 .hljs-literal {
-  color: #0184bb;
+  color: #56b6c2;
 }
 
 .hljs-string,
@@ -143,7 +143,7 @@ code.hljs {
 .hljs-addition,
 .hljs-attribute,
 .hljs-meta .hljs-string {
-  color: #50a14f;
+  color: #98c379;
 }
 
 .hljs-attr,
@@ -154,7 +154,7 @@ code.hljs {
 .hljs-selector-attr,
 .hljs-selector-pseudo,
 .hljs-number {
-  color: #986801;
+  color: #d19a66;
 }
 
 .hljs-symbol,
@@ -163,13 +163,13 @@ code.hljs {
 .hljs-meta,
 .hljs-selector-id,
 .hljs-title {
-  color: #4078f2;
+  color: #61aeee;
 }
 
 .hljs-built_in,
 .hljs-title.class_,
 .hljs-class .hljs-title {
-  color: #c18401;
+  color: #e6c07b;
 }
 
 .hljs-emphasis {
