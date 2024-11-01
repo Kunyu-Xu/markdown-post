@@ -15,6 +15,7 @@ import { MarkdownEditor } from "@/components/markdown-editor.tsx";
 import defaultMarkdown from "@/data/welcome-zh.md?raw";
 import CopyButtonGroup from "@/components/copy-button-group.tsx";
 import DownloadButtonGroup from "@/components/download-button-group.tsx";
+import Toolbar from "@/components/toolbar.tsx";
 
 // Move marked configuration to a separate constant
 const markedInstance = new Marked(
@@ -91,30 +92,12 @@ export default function IndexPage() {
 
   return (
     <DefaultLayout>
-      {/*<FlipWordHero />*/}
       <TypewriterHero />
-      <div className="flex gap-4 items-center mb-4">
-        <Select
-          disallowEmptySelection={true}
-          label="Select style"
-          selectedKeys={[selectedStyle]}
-          onChange={(e) => setSelectedStyle(e.target.value)}
-        >
-          {markdownStyles.map((style) => (
-            <SelectItem key={style.name} value={style.name}>
-              {style.name}
-            </SelectItem>
-          ))}
-        </Select>
-        <CopyButtonGroup />
-        <DownloadButtonGroup />
-        {/*<Switch*/}
-        {/*  isSelected={showRenderedHTML}*/}
-        {/*  onValueChange={setShowRenderedHTML}*/}
-        {/*>*/}
-        {/*  Render HTML*/}
-        {/*</Switch>*/}
-      </div>
+      <Toolbar
+        selectedStyle={selectedStyle}
+        setSelectedStyle={setSelectedStyle}
+        markdownStyles={markdownStyles}
+      />
       <ResizableSplitPane
         initialLeftWidth={40}
         leftPane={LeftContent}

@@ -64,23 +64,31 @@ export default function ResizableSplitPane({
   }, [handleMouseMove, handleMouseUp]);
 
   return (
-    <div
-      ref={containerRef}
-      className="flex h-lvh w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
-    >
+    <div>
       <div
-        className="overflow-auto bg-white"
-        style={{ width: `${leftWidth}%` }}
+        ref={containerRef}
+        className="hidden md:flex h-lvh w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
       >
-        {leftPane}
+        <div
+          className="overflow-auto bg-white"
+          style={{ width: `${leftWidth}%` }}
+        >
+          {leftPane}
+        </div>
+        <div
+          className="cursor-col-resize bg-gray-300 hover:bg-gray-400 transition-colors"
+          style={{ width: "4px" }}
+          onDoubleClick={handleDoubleClick}
+          onMouseDown={handleMouseDown}
+        />
+        <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
       </div>
-      <div
-        className="cursor-col-resize bg-gray-300 hover:bg-gray-400 transition-colors"
-        style={{ width: "4px" }}
-        onDoubleClick={handleDoubleClick}
-        onMouseDown={handleMouseDown}
-      />
-      <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
+
+      <div className="md:hidden flex flex-col border-3 border-solid border-gray-300 rounded-2xl overflow-hidden">
+        <div className="flex-1 overflow-auto bg-white">{leftPane}</div>
+        <div className="h-1 bg-gray-300"></div>
+        <div className="flex-1 overflow-auto bg-white">{rightPane}</div>
+      </div>
     </div>
   );
 }
