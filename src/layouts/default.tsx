@@ -8,7 +8,7 @@ export default function DefaultLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative flex flex-col">
+    <div className="relative flex flex-col bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
       <Navbar />
       <main className="container mx-auto max-w-7xl px-2 md:px-6 flex-grow pt-2 md:pt-8">
         {children}
