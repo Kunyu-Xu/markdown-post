@@ -9,6 +9,7 @@ import {
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
 import { Copy } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { ChevronDownIcon } from "@/components/icons.tsx";
 import { copyHtmlWithStyle } from "@/lib/copy-html.tsx";
@@ -19,18 +20,19 @@ interface CopyButtonGroupProps {
 }
 
 export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
+  const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = React.useState<any>(
     new Set(["email"]),
   );
 
   const descriptionsMap: any = {
-    email: "Then you can paste it to email editor like Gmail.",
-    image: "Then you can paste it to every where.",
+    email: t("copyEmail.buttonDescription"),
+    image: t("copyImage.buttonDescription"),
   };
 
   const labelsMap: any = {
-    email: "Copy as email",
-    image: "Copy as image",
+    email: t("copyEmail.buttonName"),
+    image: t("copyImage.buttonName"),
   };
 
   const selectedOptionValue: any = Array.from(selectedOption)[0];
@@ -46,8 +48,8 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
   const handleCopyButtonClick = () => {
     if (selectedOption.has("email")) {
       copyHtmlWithStyle("markdown-body");
-      toast.success(`Content copied`, {
-        description: "You can paste into your email",
+      toast.success(t("copyEmail.successMessage"), {
+        description: t("copyEmail.successDescription"),
         duration: 4000,
         position: "top-center",
       });
@@ -58,7 +60,7 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
         return;
       }
 
-      toast.success("Converting... please wait...", {
+      toast.success(t("commonToast.processing"), {
         duration: 4000,
         position: "top-center",
       });
@@ -71,7 +73,7 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
 
         navigator.clipboard.write([text]);
 
-        toast.success("Image copied to clipboard", {
+        toast.success(t("copyImage.successMessage"), {
           duration: 4000,
           position: "top-center",
         });
@@ -82,19 +84,19 @@ export default function CopyButtonGroup({ fullWidth }: CopyButtonGroupProps) {
             navigator.clipboard
               .write([new ClipboardItem({ "image/png": blob })])
               .then(() => {
-                toast.success("Image copied to clipboard", {
+                toast.success(t("copyImage.successMessage"), {
                   duration: 4000,
                   position: "top-center",
                 });
               })
               .catch((err) => {
+                toast.error(t("copyImage.failedMessage"));
                 console.error("Failed to copy image to clipboard:", err);
-                toast.error("Failed to copy image");
               });
           })
           .catch(function (error) {
+            toast.error(t("copyImage.failedMessage"));
             console.error("oops, something went wrong!", error);
-            toast.error("Failed to copy image");
           });
       }
     }

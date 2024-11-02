@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 import { createMarkdownImage, saveImageBase64 } from "@/lib/image-store";
+import { useTranslation } from "react-i18next";
 
 interface CodeEditorProps {
   value: string;
@@ -30,6 +31,8 @@ export const MarkdownEditor: React.FC<CodeEditorProps> = ({
   value,
   onChange,
 }) => {
+  const { t } = useTranslation();
+
   const editorRef = useRef<HTMLDivElement>(null);
   const viewRef = useRef<EditorView>();
 
@@ -69,7 +72,7 @@ export const MarkdownEditor: React.FC<CodeEditorProps> = ({
               reader.readAsDataURL(file);
             } catch (error) {
               console.error(error);
-              toast.error("Failed to insert image");
+              toast.error(t("commonToast.error"));
             }
           }
           break;

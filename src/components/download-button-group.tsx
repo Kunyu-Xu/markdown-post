@@ -6,6 +6,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/dropdown";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import * as htmlToImage from "html-to-image";
 import { Download } from "lucide-react";
@@ -20,25 +21,26 @@ interface DownloadButtonGroupProps {
 export default function DownloadButtonGroup({
   fullWidth,
 }: DownloadButtonGroupProps) {
+  const { t } = useTranslation();
   const [selectedOption, setSelectedOption] = React.useState<any>(
     new Set(["image"]),
   );
 
   const descriptionsMap: any = {
-    image: "Download image file.",
-    pdf: "Download PDF file.",
+    image: t("downloadImage.buttonDescription"),
+    pdf: t("downloadPDF.buttonDescription"),
   };
 
   const labelsMap: any = {
-    image: "Download image",
-    pdf: "Download PDF",
+    image: t("downloadImage.buttonName"),
+    pdf: t("downloadPDF.buttonName"),
   };
 
   const selectedOptionValue: any = Array.from(selectedOption)[0];
 
   const handleDownloadButtonClick = async () => {
     if (selectedOption.has("pdf")) {
-      toast.success(`Feature is developing`, {
+      toast.success(t("commonToast.developing"), {
         duration: 4000,
         position: "top-center",
       });
@@ -49,7 +51,7 @@ export default function DownloadButtonGroup({
         return;
       }
 
-      toast.success("Converting... please wait...", {
+      toast.success(t("commonToast.processing"), {
         duration: 4000,
         position: "top-center",
       });
@@ -67,13 +69,14 @@ export default function DownloadButtonGroup({
         link.download = "markdown-post.png";
         link.href = dataUrl;
         link.click();
-        toast.success("Image saved", {
+        toast.success(t("downloadImage.successMessage"), {
+          description: t("downloadImage.successDescription"),
           duration: 4000,
           position: "top-center",
         });
       } catch (error) {
         console.error("oops, something went wrong!", error);
-        toast.error("Failed to download image");
+        toast.error(t("downloadImage.failedMessage"));
       }
     }
   };
