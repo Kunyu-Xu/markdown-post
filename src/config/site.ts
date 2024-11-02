@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Markdown Post",
+  name: "MarkdownPost",
   description: "Write Markdown And Post Everywhere.",
   navItems: [
     // {

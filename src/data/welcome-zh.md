@@ -1,8 +1,8 @@
-# Markdown Post
+# MarkdownPost
 
-👋 欢迎来到`Markdown Post`！很高兴见到你！
+👋 欢迎来到`MarkdownPost`！很高兴见到你！
 
-Markdown Post 是一款免费工具，旨在帮助你专注于内容创作，通过多种排版样式，让您的内容更加生动和吸引人，轻松实现专业文档效果。
+MarkdownPost 是一款免费工具，旨在帮助你专注于内容创作，通过多种排版样式，让您的内容更加生动和吸引人，轻松实现专业文档效果。
 
 ## 快速上手
 
@@ -15,7 +15,7 @@ Markdown Post 是一款免费工具，旨在帮助你专注于内容创作，通
 
 ## 使用场景
 
-Markdown Post 的多种输出格式（正在开发中），可以满足不同的使用场景：
+MarkdownPost 的多种输出格式（正在开发中），可以满足不同的使用场景：
 
 | 格式     | 描述                    | 场景        |
 |--------|-----------------------|-----------|
@@ -35,5 +35,5 @@ Markdown Post 的多种输出格式（正在开发中），可以满足不同的
 
 ## 欢迎反馈
 
-欢迎在 [Github Issue](https://github.com/Cyronlee/markdown-post/issues) 中提出你的想法和建议，你的反馈会让 Markdown Post
+欢迎在 [Github Issue](https://github.com/Cyronlee/markdown-post/issues) 中提出你的想法和建议，你的反馈会让 MarkdownPost
 变得更好！

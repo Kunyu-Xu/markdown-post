@@ -58,7 +58,7 @@ export const Navbar = () => {
             href="/"
           >
             <Logo />
-            <p className="font-bold text-inherit">Markdown Post</p>
+            <p className="font-bold text-inherit">MarkdownPost</p>
           </Link>
         </NavbarBrand>
         {/*<div className="hidden lg:flex gap-4 justify-start ml-2">*/}
