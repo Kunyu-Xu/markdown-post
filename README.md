@@ -1,50 +1,50 @@
-# Vite & NextUI Template
+<h1 style="display: flex; align-items: center;"><img src="https://raw.githubusercontent.com/Cyronlee/markdown-post/refs/heads/master/public/logo.svg" width="48" height="48" > MarkdownPost</h1>
 
-This is a template for creating applications using Vite and NextUI (v2).
+> English | [中文](https://github.com/Cyronlee/markdown-post/blob/master/README-zh.md)
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/vite-template)
+👋 Welcome to `MarkdownPost`! Nice to meet you!
 
-## Technologies Used
+Just focus on creating your content, **MarkdownPost** will handle the conversion to formats like `email`, `image`,
+`PDF`, and more.
 
-- [Vite](https://vitejs.dev/guide/)
-- [NextUI](https://nextui.org)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Framer Motion](https://www.framer.com/motion)
+Website：[https://mdpost.vercel.app](https://mdpost.vercel.app)
 
-## How to Use
+![](https://raw.githubusercontent.com/Cyronlee/markdown-post/refs/heads/master/docs/demo-zh.gif)
 
-To clone the project, run the following command:
+## Features
 
-```bash
-git clone https://github.com/nextui-org/vite-template.git
-```
+- 💡 **Simple to Use:** Real-time preview, what you see is what you get.
+- 🏞️ **Image Upload:** Paste images, automatically generate image links.
+- 🎨 **Multiple Themes:** Continuously updated to meet different layout needs.
+- 📧 **Quick Sharing:** One-click copy, ready to publish on multiple platforms.
+- 📄 **Auto-Adapt:** Adapts to email window widths for a more attractive display.
+- 🔒 **Data Security:** Text and images are processed entirely in the browser, not uploaded to servers.
+- 🌟 **Free & Open Source:** Completely free to use, community contributions welcome.
 
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+# Local Development
 
 ```bash
-npm install
+yarn install
+
+yarn run dev
 ```
 
-### Run the development server
+## Contributing Styles
 
-```bash
-npm run dev
+Add a css file in `src/styles/`, then add the style in `src/config/post-styles.ts`:
+
+```ts
+import githubStyle from "@/styles/github.css?raw";
+import newspaperStyle from "@/styles/newspaper.css?raw";
+import posterStyle from "@/styles/poster.css?raw";
+
+export const markdownStyles = [
+  { name: "github", css: githubStyle },
+  { name: "newspaper", css: newspaperStyle },
+  { name: "poster", css: posterStyle },
+];
 ```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
 ## License
 
-Licensed under the [MIT license](https://github.com/nextui-org/vite-template/blob/main/LICENSE).
+[MIT License](https://github.com/Cyronlee/markdown-post/blob/master/LICENSE)

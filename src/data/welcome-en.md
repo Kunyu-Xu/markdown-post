@@ -1,8 +1,9 @@
 # MarkdownPost
 
-👋 Welcome to `MarkdownPost`! Nice to meet you!
+👋 Welcome to **MarkdownPost**! Nice to meet you!
 
-MarkdownPost is a free tool designed to help you focus on content creation. With various layout styles, it makes your content more vivid and attractive, easily achieving professional document effects.
+Just focus on creating your content, **MarkdownPost** will handle the conversion to formats like `email`, `image`, `PDF`, and
+more.
 
 ## Quick Start
 
@@ -15,13 +16,13 @@ MarkdownPost is a free tool designed to help you focus on content creation. With
 
 ## Use Cases
 
-MarkdownPost's various output formats (currently under development) can meet different use cases:
+**MarkdownPost**'s various output formats (currently under development) can meet different use cases:
 
-| Format | Description                      | Scenario          |
-|--------|----------------------------------|-------------------|
-| 🖼️ Image | Generate shareable images from Markdown | Social media sharing |
-| 📧 Email  | Create content that can be embedded directly into emails | Newsletters, article sharing |
-| 📄 PDF   | PDF format for easy saving, sharing, and printing | Document archiving, file transfer |
+| Format    | Description                                              | Scenario                          |
+|-----------|----------------------------------------------------------|-----------------------------------|
+| 🖼️ Image | Generate shareable images from Markdown                  | Social media sharing              |
+| 📧 Email  | Create content that can be embedded directly into emails | Newsletters, article sharing      |
+| 📄 PDF    | PDF format for easy saving, sharing, and printing        | Document archiving, file transfer |
 
 ## Features
 
@@ -35,4 +36,5 @@ MarkdownPost's various output formats (currently under development) can meet dif
 
 ## Feedback
 
-Feel free to share your ideas and suggestions on [Github Issue](https://github.com/Cyronlee/markdown-post/issues). Your feedback will make MarkdownPost better! 
+Feel free to share your ideas and suggestions on [Github Issue](https://github.com/Cyronlee/markdown-post/issues). Your
+feedback will make **MarkdownPost** better! 
