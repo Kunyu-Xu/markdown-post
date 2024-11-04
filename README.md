@@ -33,6 +33,8 @@ yarn run dev
 
 Add a css file in `src/styles/`, then add the style in `src/config/post-styles.ts`:
 
+> Unsupported CSS may be ignored by Gmail, please refer to https://developers.google.com/gmail/design/css
+
 ```ts
 import githubStyle from "@/styles/github.css?raw";
 import newspaperStyle from "@/styles/newspaper.css?raw";

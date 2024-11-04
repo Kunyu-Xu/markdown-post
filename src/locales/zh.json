@@ -2,7 +2,8 @@
   "postStyle": {
     "github": "默认",
     "newspaper": "报纸",
-    "poster": "海报"
+    "poster": "海报",
+    "slim": "细体"
   },
   "toolbar": {
     "selectStyleText": "选择样式"

@@ -30,6 +30,8 @@ yarn run dev
 
 在`src/styles/`下添加css文件，然后在`src/config/post-styles.ts`中添加样式：
 
+> Gmail会移除不支持的CSS，请参考https://developers.google.com/gmail/design/css
+
 ```ts
 import githubStyle from "@/styles/github.css?raw";
 import newspaperStyle from "@/styles/newspaper.css?raw";

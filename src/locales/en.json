@@ -2,7 +2,8 @@
   "postStyle": {
     "github": "Github",
     "newspaper": "Newspaper",
-    "poster": "Poster"
+    "poster": "Poster",
+    "slim": "Slim"
   },
   "toolbar": {
     "selectStyleText": "Select style"
