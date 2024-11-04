@@ -68,7 +68,7 @@ img {
 
 /* 代码块样式 */
 pre {
-  background-color: #f4f4f4;
+  background-color: #fafafa;
   padding: 15px;
   border: 1px solid #dddddd;
   overflow-x: auto;
@@ -77,7 +77,7 @@ pre {
 }
 
 code {
-  background-color: #f0f0f0;
+  background-color: #fafafa;
   padding: 2px 4px;
   font-size: 14px;
   color: #d6336c;
