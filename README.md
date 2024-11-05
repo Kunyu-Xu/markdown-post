@@ -9,7 +9,7 @@ Just focus on creating your content, **MarkdownPost** will handle the conversion
 
 Website：[https://mdpost.vercel.app](https://mdpost.vercel.app)
 
-![](https://raw.githubusercontent.com/Cyronlee/markdown-post/refs/heads/master/docs/demo-zh.gif)
+![](https://raw.githubusercontent.com/Cyronlee/markdown-post/refs/heads/master/docs/demo-en.gif)
 
 ## Features
 
