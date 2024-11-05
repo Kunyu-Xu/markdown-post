@@ -12,7 +12,8 @@ import { loadCSS, markdownStyles } from "@/config/post-styles.ts";
 import { replaceImgSrc } from "@/lib/image-store";
 import { TypewriterHero } from "@/components/typewriter-hero";
 import { MarkdownEditor } from "@/components/markdown-editor.tsx";
-import defaultMarkdown from "@/data/welcome-zh.md?raw";
+import welcomeMarkdownZh from "@/data/welcome-zh.md?raw";
+import welcomeMarkdownEn from "@/data/welcome-en.md?raw";
 import CopyButtonGroup from "@/components/copy-button-group.tsx";
 import DownloadButtonGroup from "@/components/download-button-group.tsx";
 import Toolbar from "@/components/toolbar.tsx";
@@ -40,13 +41,18 @@ const wrapWithContainer = (htmlString: string) => {
 export default function IndexPage() {
   const { i18n, t } = useTranslation();
 
-  const [markdown, setMarkdown] = useState(defaultMarkdown);
+  const [markdown, setMarkdown] = useState(welcomeMarkdownZh);
+
   const [html, setHtml] = useState("");
   const [inlineStyledHTML, setInlineStyledHTML] = useState("");
   const [selectedStyle, setSelectedStyle] = useState(markdownStyles[0].name);
 
   // @ts-ignore
   const [showRenderedHTML, setShowRenderedHTML] = useState(true);
+
+  useEffect(() => {
+    setMarkdown(i18n.language === "zh" ? welcomeMarkdownZh : welcomeMarkdownEn);
+  }, [i18n.language]);
 
   // Parse markdown to HTML
   useEffect(() => {
