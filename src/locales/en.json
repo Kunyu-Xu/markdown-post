@@ -3,7 +3,8 @@
     "github": "Github",
     "newspaper": "Newspaper",
     "poster": "Poster",
-    "slim": "Slim"
+    "slim": "Slim",
+    "note": "Note"
   },
   "toolbar": {
     "selectStyleText": "Select style"
