@@ -3,7 +3,8 @@
     "github": "默认",
     "newspaper": "报纸",
     "poster": "海报",
-    "slim": "细体"
+    "slim": "细体",
+    "note": "笔记"
   },
   "toolbar": {
     "selectStyleText": "选择样式"
