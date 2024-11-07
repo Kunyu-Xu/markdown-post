@@ -91,7 +91,7 @@ export const MarkdownEditor: React.FC<CodeEditorProps> = ({
       extensions: [
         basicSetup,
         markdown(),
-        // EditorView.lineWrapping,
+        EditorView.lineWrapping,
         EditorView.updateListener.of((update) => {
           if (update.docChanged) {
             onChange(update.state.doc.toString());

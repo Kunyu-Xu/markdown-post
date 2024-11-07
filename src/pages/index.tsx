@@ -29,6 +29,9 @@ const markedInstance = new Marked(
       return hljs.highlight(code, { language }).value;
     },
   }),
+  {
+    breaks: true,
+  },
 );
 
 // Helper functions
