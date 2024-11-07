@@ -42,6 +42,7 @@ export default function IndexPage() {
   const { i18n, t } = useTranslation();
 
   const [markdown, setMarkdown] = useState(welcomeMarkdownZh);
+  const [isModified, setIsModified] = useState(false);
 
   const [html, setHtml] = useState("");
   const [inlineStyledHTML, setInlineStyledHTML] = useState("");
@@ -74,10 +75,30 @@ export default function IndexPage() {
     }
   }, [html, selectedStyle]);
 
+  const handleMarkdownChange = (newMarkdown: string) => {
+    setMarkdown(newMarkdown);
+    setIsModified(true);
+  };
+
+  useEffect(() => {
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    if (isModified) {
+      window.addEventListener("beforeunload", handleBeforeUnload);
+    }
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isModified]);
+
   // UI Components
   const LeftContent = (
     <div className="p-4">
-      <MarkdownEditor value={markdown} onChange={setMarkdown} />
+      <MarkdownEditor value={markdown} onChange={handleMarkdownChange} />
     </div>
   );
 
