@@ -7,14 +7,17 @@ import {
   DropdownItem,
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
-import { useTranslation } from "react-i18next";
 import { LangIcon } from "@/components/icons.tsx";
+import { useNavigate } from "react-router-dom";
 
-const LangSwitcher = () => {
-  const { i18n, t } = useTranslation();
+const LangButton = () => {
+  const navigate = useNavigate();
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
+  const handleLanguageSelected = (lang: any) => {
+    const pathSegments = location.pathname.split("/");
+
+    pathSegments[1] = lang;
+    navigate(pathSegments.join("/"), { replace: true });
   };
 
   return (
@@ -28,9 +31,7 @@ const LangSwitcher = () => {
         aria-label="Static Actions"
         disallowEmptySelection
         // selectionMode="single"
-        onAction={(lang) => {
-          changeLanguage(lang as string);
-        }}
+        onAction={handleLanguageSelected}
       >
         <DropdownItem key="zh">中文</DropdownItem>
         <DropdownItem key="en">English</DropdownItem>
@@ -39,4 +40,4 @@ const LangSwitcher = () => {
   );
 };
 
-export default LangSwitcher;
+export default LangButton;
