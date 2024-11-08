@@ -1,7 +1,8 @@
 import { TypewriterEffectSmooth } from "@/components/typewriter";
+import { useTranslation } from "react-i18next";
 
 export function TypewriterHero() {
-  const words = [
+  const enWords = [
     {
       text: "Write",
     },
@@ -21,9 +22,34 @@ export function TypewriterHero() {
     },
   ];
 
+  const zhWords = [
+    {
+      text: "创作",
+    },
+    {
+      text: "Markdown",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+    {
+      text: "，随处",
+    },
+    {
+      text: "分享",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+    {
+      text: "。",
+    },
+  ];
+
+  const { i18n } = useTranslation();
+
   return (
     <div className="flex justify-center items-center">
-      <TypewriterEffectSmooth className="" cursorClassName="" words={words} />
+      <TypewriterEffectSmooth
+        key={i18n.language}
+        words={i18n.language === "zh" ? zhWords : enWords}
+      />
     </div>
   );
 }
