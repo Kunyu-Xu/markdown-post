@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import markedKatex from "marked-katex-extension"
+import markedKatex from "marked-katex-extension";
 import hljs from "highlight.js";
 import { useTranslation } from "react-i18next";
 
@@ -27,7 +27,7 @@ const markedInstance = new Marked(
       return hljs.highlight(code, { language }).value;
     },
   }),
-    markedKatex({
+  markedKatex({
     throwOnError: false,
   }),
   {

@@ -3,7 +3,7 @@ import newspaperStyle from "@/styles/newspaper.css?raw";
 import posterStyle from "@/styles/poster.css?raw";
 import slimStyle from "@/styles/slim.css?raw";
 import noteStyle from "@/styles/note.css?raw";
-import twStyle from "@/styles/tw.css?raw";
+import twStyle from "@/styles/thoughtworks.css?raw";
 
 export const markdownStyles = [
   { name: "github", css: githubStyle },
