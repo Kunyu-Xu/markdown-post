@@ -78,7 +78,7 @@ export default function ResizableSplitPane({
       ) : (
         <div
           ref={containerRef}
-          className="flex h-lvh w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
+          className="flex h-full w-full overflow-hidden border-3 border-solid border-gray-300 rounded-2xl"
         >
           <div
             className="overflow-auto bg-white"
