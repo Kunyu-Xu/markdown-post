@@ -9,7 +9,11 @@ import StyleSettingPopover from "@/components/toolbar/style-setting-popover.tsx"
 import { ToolbarState } from "@/state/toolbarState";
 import { loadCSS, markdownStyles } from "@/config/post-styles.ts";
 
-const Toolbar: React.FC = () => {
+interface ToolbarProps {
+  markdown: string;
+}
+
+const Toolbar: React.FC<ToolbarProps> = ({ markdown }) => {
   const { t } = useTranslation();
   const { selectedStyle, setSelectedStyle, setArticleStyle } =
     ToolbarState.useContainer();
@@ -40,7 +44,7 @@ const Toolbar: React.FC = () => {
         <CopyButtonGroup />
       </div>
       <div className="lg:col-span-2 col-span-6">
-        <DownloadButtonGroup />
+        <DownloadButtonGroup markdown={markdown} />
       </div>
     </div>
   );

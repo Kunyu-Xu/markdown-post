@@ -112,7 +112,7 @@ export default function IndexPage() {
   return (
     <DefaultLayout>
       <TypewriterHero />
-      <Toolbar />
+      <Toolbar markdown={markdown} />
       <ResizableSplitPane
         initialLeftWidth={40}
         leftPane={LeftContent}

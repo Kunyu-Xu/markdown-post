@@ -43,6 +43,20 @@
     "successDescription": "PDF has been successfully saved",
     "failedMessage": "Failed to download PDF"
   },
+  "downloadHTML": {
+    "buttonName": "Download HTML",
+    "buttonDescription": "Download .html file.",
+    "successMessage": "HTML saved",
+    "successDescription": "HTML has been successfully saved",
+    "failedMessage": "Failed to download HTML"
+  },
+  "downloadMarkdown": {
+    "buttonName": "Download Markdown",
+    "buttonDescription": "Download .md file.",
+    "successMessage": "Markdown saved",
+    "successDescription": "Markdown has been successfully saved",
+    "failedMessage": "Failed to download Markdown"
+  },
   "customize": {
     "containerBackground": "Container Background",
     "buttonName": "Customize",

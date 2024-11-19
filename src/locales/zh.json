@@ -43,6 +43,20 @@
     "successDescription": "PDF已成功保存",
     "failedMessage": "下载PDF失败"
   },
+  "downloadHTML": {
+    "buttonName": "下载HTML",
+    "buttonDescription": "下载为.html格式的文件。",
+    "successMessage": "HTML已保存",
+    "successDescription": "HTML已成功保存",
+    "failedMessage": "下载HTML失败"
+  },
+  "downloadMarkdown": {
+    "buttonName": "下载Markdown",
+    "buttonDescription": "下载为.md格式的文件。",
+    "successMessage": "Markdown已保存",
+    "successDescription": "Markdown已成功保存",
+    "failedMessage": "下载Markdown失败"
+  },
   "customize": {
     "containerBackground": "背景色",
     "buttonName": "自定义",
