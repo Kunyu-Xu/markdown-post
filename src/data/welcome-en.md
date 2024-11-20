@@ -2,13 +2,12 @@
 
 👋 Welcome to **MarkdownPost**! Nice to meet you!
 
-Just focus on creating your content, **MarkdownPost** will handle the conversion to formats like `email`, `image`, `PDF`, and
-more.
+Just focus on creating your content, **MarkdownPost** will convert it to `email`, `image`, `PDF` and more.
 
 ## Quick Start
 
-1. Write content: Enter Markdown text, paste images.
-2. Choose a theme: Pick a theme that suits your content.
+1. Write content: Enter Markdown text📝, paste images🏞️.
+2. Choose a theme: Pick a theme🎨 that suits your content.
 3. Copy content: Copy the formatted content with one click.
 4. Paste & Share: Paste it into emails, chat software, or anywhere else for quick sharing.
 
